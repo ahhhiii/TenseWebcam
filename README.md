@@ -8,6 +8,9 @@
 4. Add new source -> Browser -> URL: http://localhost:8019
 5. Set width and height to 300x125
 6. Press OK
+7. You can use this for whatever purpose you want. I tried it with Virtual Camera in OBS to use in a discord call.
+
+[![image.png](https://i.gyazo.com/76c00ff16006b549778ca325eb6e0b47.png)](https://gyazo.com/76c00ff16006b549778ca325eb6e0b47)
 
 If you restart the JAR file, you need to refresh the browser source in OBS.
 
