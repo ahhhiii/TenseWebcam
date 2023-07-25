@@ -44,7 +44,7 @@ object AudioListener {
                 talkingMoment++
             }
 
-            if (System.currentTimeMillis() - lastPeriod >= 1000) {
+            if (System.currentTimeMillis() - lastPeriod >= 500) {
                 lastPeriod = System.currentTimeMillis()
                 val isTalking = talkingMoment.toDouble() / totalMoments.toDouble() >= 0.5
                 if (isTalking != lastTalking) {
