@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+    <title>Tense Webcam</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #video1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        #video2 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<video id="video1" width="300" height="125" autoplay="true" muted="muted" loop>
+    <source src="http://localhost:8019/waiting" type="video/mp4">
+    Your browser does not support HTML video.
+</video>
+<video id="video2" width="300" height="125" autoplay="true" muted="muted" loop>
+    <source src="http://localhost:8019/talking" type="video/mp4">
+    Your browser does not support HTML video.
+</video>
+</body>
+<script>
+    let talkingOverlay = document.getElementById("video2");
+
+    let ws = new WebSocket("ws://localhost:8020");
+    ws.onopen = function () {
+        console.log("websocket is connected ...");
+    };
+    ws.onmessage = function (ev) {
+        console.log("Received message: " + ev.data);
+        if (ev.data == 1) {
+            talkingOverlay.style.display = "block";
+        } else if (ev.data == 0) {
+            talkingOverlay.style.display = "none";
+        }
+    };
+    ws.onclose = function () {
+        console.log("websocket is closed ...");
+    };
+</script>
+</html>
